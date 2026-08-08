@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certiredes - Propuesta Plan Operativo | Madeline Mujeres con Estilo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Colores extraídos directamente del logo y presentaciones del SENA/Madeline */
+            --primary-dark: #12281E;
+            --sena-green: #238249;
+            --madeline-green: #3A6B48;
+            --accent-mint: #86C19F;
+            --bg-cream: #F4F7F4;
+            --white: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --shadow-soft: 0 10px 30px rgba(18, 40, 30, 0.08);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Barra de Navegación Fija y Moderna */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--sena-green);
+        }
+
+        .brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.1;
+        }
+
+        .brand span {
+            font-size: 0.75rem;
+            display: block;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--sena-green);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--sena-green);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section Dinámica tipo Presentación Ejecutiva */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(18, 40, 30, 0.92) 0%, rgba(35, 130, 73, 0.85) 100%), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 8rem 2rem 4rem 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .sena-badge {
+            background: rgba(134, 193, 159, 0.2);
+            color: var(--accent-mint);
+            padding: 0.5rem 1.8rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            border: 1px solid rgba(134, 193, 159, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            color: #E2E8F0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background-color: var(--sena-green);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(35, 130, 73, 0.4);
+        }
+
+        .btn-main:hover {
+            background-color: #1b663a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(35, 130, 73, 0.6);
+        }
+
+        /* Secciones Generales con Layouts CSS Grid Avanzados (Sin bajarse desordenado) */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-tag {
+            color: var(--sena-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Grid Multidireccional y Responsive para Pantallas Grandes */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+            gap: 3rem;
+            align-items: stretch;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Tarjetas Estilo Diapositiva Interactiva (Tarjetas Dinámicas) */
+        .slide-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border-top: 5px solid var(--sena-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(18, 40, 30, 0.12);
+        }
+
+        /* Ficha Técnica / Equipo */
+        .team-profile-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-member-card {
+            background: var(--bg-cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+            transition: var(--transition);
+        }
+
+        .team-member-card:hover {
+            border-color: var(--sena-green);
+            background: var(--white);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem auto;
+            border: 3px solid var(--sena-green);
+        }
+
+        .team-member-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .team-member-card span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Galería del Taller con Efecto Parallax / Zoom */
+        .workshop-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-box {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 280px;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .gallery-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(18, 40, 30, 0.85), transparent);
+            color: var(--white);
+            padding: 1.5rem 1.2rem 1rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Árbol de Problemas - Estilo Estructurado Logístico */
+        .problem-tree-wrapper {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .tree-level-title {
+            text-align: center;
+            font-weight: 700;
+            color: var(--madeline-green);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tree-node {
+            background: #F0F7F3;
+            border: 1px solid #D1E5D8;
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            transition: var(--transition);
+        }
+
+        .tree-node:hover {
+            background: var(--sena-green);
+            color: var(--white);
+            border-color: var(--sena-green);
+        }
+
+        .central-problem-node {
+            background: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 2.5rem 0;
+            box-shadow: 0 8px 25px rgba(18, 40, 30, 0.2);
+            border-left: 6px solid var(--sena-green);
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        /* Objetivos Grid Dinámico */
+        .objective-main-banner {
+            background: linear-gradient(135deg, var(--primary-dark), var(--sena-green));
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .objective-main-banner h3 {
+            color: var(--accent-mint);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .objective-main-banner p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .specific-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .obj-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 14px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .obj-card:hover {
+            transform: translateY(-5px);
+            border-left: 4px solid var(--sena-green);
+        }
+
+        .obj-card i {
+            font-size: 2rem;
+            color: var(--sena-green);
+            background: #E8F4EC;
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .obj-card p {
+            font-size: 0.98rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Footer Ejecutivo */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 4rem 3rem 2rem 3rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-icons-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-icons-group a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons-group a:hover {
+            background: var(--sena-green);
+            transform: translateY(-3px);
+        }
+
+        footer p {
+            color: #A0AEC0;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Breakpoints robustos para evitar desbordes */
+        @media (max-width: 1200px) {
+            .workshop-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .causes-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .specific-objectives-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav ul {
+                display: none;
+            }
+            .grid-2col, .effects-grid, .causes-grid, .specific-objectives-grid, .team-profile-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <div class="nav-container">
+            <div class="brand-wrapper">
+                <img src="madelein-costura.jpeg" alt="Logo Madeline" class="brand-logo">
+                <div class="brand">
+                    Madeline
+                    <span>Mujeres con Estilo</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#proyecto">Ficha Técnica</a></li>
+                    <li><a href="#contexto">Contextualización</a></li>
+                    <li><a href="#taller">Instalaciones</a></li>
+                    <li><a href="#diagnostico">Plan Operativo</a></li>
+                    <li><a href="#objetivos">Objetivos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / Presentación Ejecutiva -->
+    <section id="inicio" class="hero" style="padding-top: 10rem;">
+        <div class="hero-content">
+            <span class="sena-badge">TECNÓLOGO COORDINACIÓN DE PROCESOS LOGÍSTICOS · ID 3118357</span>
+            <h1>Propuesta de un Plan Operativo de los Procesos Logísticos</h1>
+            <p>Optimización, eficiencia y gestión estratégica aplicada al taller de confección Madeline Mujeres con Estilo.</p>
+            <a href="#proyecto" class="btn-main">
+                Iniciar Presentación <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Ficha Técnica y Equipo Investigador -->
+    <section id="proyecto">
+        <div class="section-header">
+            <span class="section-tag">Marco Institucional</span>
+            <h2 class="section-title">Ficha Técnica y Autores</h2>
+            <p class="section-subtitle">Centro de Comercio y Servicios · Red de Conocimiento en Logística y Gestión de la Producción</p>
+        </div>
+
+        <div class="grid-2col">
+            <div class="slide-card">
+                <div>
+                    <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 1.5rem;">Detalles del Programa</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <i class="fa-solid fa-building" style="color: var(--sena-green); font-size: 1.3rem;"></i>
+                            <div><strong>Centro:</strong> Centro de Comercio y Servicios</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <i class="fa-solid fa-graduation-cap" style="color: var(--sena-green); font-size: 1.3rem;"></i>
+                            <div><strong>Programa:</strong> Tecnólogo Coordinación de Procesos Logísticos</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <i class="fa-solid fa-layer-group" style="color: var(--sena-green); font-size: 1.3rem;"></i>
+                            <div><strong>Línea Tecnológica:</strong> Línea Tecnológica: Cliente</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <i class="fa-solid fa-truck-fast" style="color: var(--sena-green); font-size: 1.3rem;"></i>
+                            <div><strong>Red Logística:</strong> Red Tecnológica: Logística y Transporte</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #E2E8F0; font-size: 0.9rem; color: var(--text-muted);">
+                    <i class="fa-solid fa-location-dot" style="color: var(--sena-green); margin-right: 5px;"></i> Cali, Valle del Cauca, Colombia
+                </div>
+            </div>
+
+            <div class="slide-card">
+                <div>
+                    <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 1.5rem; text-align: center;">Equipo Investigador</h3>
+                    <div class="team-profile-container">
+                        <div class="team-member-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Juan David Arias" class="team-avatar">
+                            <h4>Juan David Arias</h4>
+                            <span>Estudiante / Investigador</span>
+                        </div>
+                        <div class="team-member-card">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" alt="Denia Campo Badillo" class="team-avatar">
+                            <h4>Denia Campo Badillo</h4>
+                            <span>Estudiante / Investigadora</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; text-align: center; font-size: 0.9rem; color: var(--text-muted);">
+                    Presentación oficial de proyecto académico tecnológico 2026
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contextualización & Justificación -->
+    <section id="contexto" style="background-color: var(--white);">
+        <div class="section-header">
+            <span class="section-tag">Fundamentación del Negocio</span>
+            <h2 class="section-title">Contextualización y Justificación</h2>
+            <p class="section-subtitle">Análisis del entorno, impacto socioeconómico y necesidad de optimización</p>
+        </div>
+
+        <div class="grid-2col">
+            <div class="slide-card" style="border-top-color: var(--madeline-green);">
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 1.2rem; color: var(--primary-dark);">Contextualización</h3>
+                    <p style="margin-bottom: 1rem;">Emprendimiento de confección fundado en 2012, nace por el deseo de independencia, creatividad y crecimiento personal.</p>
+                    <p style="margin-bottom: 1rem;">Se destaca por su calidad, precisión y atención al detalle y funciona como <strong>taller satélite</strong> (elaboración de camisas, jeans, pijamas, etc.).</p>
+                    <p style="margin-bottom: 1rem;">Ubicado en la ciudad de <strong>Cali</strong>, cuenta actualmente con 3 colaboradores aportando de forma activa al empleo local y al sector textil.</p>
+                    <p style="color: var(--sena-green); font-weight: 600; margin-top: 1rem;"><i class="fa-solid fa-bolt"></i> Actualmente en proceso de lanzar marca propia de ropa femenina.</p>
+                </div>
+            </div>
+
+            <div class="slide-card" style="border-top-color: var(--sena-green);">
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 1.2rem; color: var(--primary-dark);">Justificación Logística</h3>
+                    <p style="margin-bottom: 1.2rem;">La industria textil-confección impulsa fuertemente el empleo y el emprendimiento, pero enfrenta grandes desafíos en tecnología, planificación y gestión operativa.</p>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem;"><i class="fa-solid fa-check-circle" style="color: var(--sena-green);"></i> Genera empleo y fomenta el emprendimiento local.</div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;"><i class="fa-solid fa-check-circle" style="color: var(--sena-green);"></i> Presenta limitaciones actuales en tecnología y gestión.</div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;"><i class="fa-solid fa-check-circle" style="color: var(--sena-green);"></i> Requiere optimizar procesos, inventarios y recursos.</div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;"><i class="fa-solid fa-check-circle" style="color: var(--sena-green);"></i> Busca mejorar la productividad, calidad y competitividad.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Real del Taller -->
+    <section id="taller">
+        <div class="section-header">
+            <span class="section-tag">Infraestructura Física</span>
+            <h2 class="section-title">Instalaciones del Taller</h2>
+            <p class="section-subtitle">Visualización del espacio de trabajo, áreas de almacenamiento y maquinaria de Madeline</p>
+        </div>
+
+        <div class="workshop-gallery">
+            <div class="gallery-box">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80" alt="Fachada e ingreso">
+                <div class="gallery-overlay">Fachada y Área de Acceso</div>
+            </div>
+            <div class="gallery-box">
+                <img src="https://images.unsplash.com/photo-1605518216936-7c5f8dbab523?auto=format&fit=crop&w=600&q=80" alt="Mesas de corte y costura">
+                <div class="gallery-overlay">Líneas de Producción y Ensamblaje</div>
+            </div>
+            <div class="gallery-box">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Almacenamiento de insumos">
+                <div class="gallery-overlay">Gestión de Insumos y Bodega</div>
+            </div>
+            <div class="gallery-box">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=600&q=80" alt="Operaria trabajando">
+                <div class="gallery-overlay">Proceso Operativo en Máquina</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planteamiento del Problema / Árbol Logístico -->
+    <section id="diagnostico" style="background-color: var(--white);">
+        <div class="section-header">
+            <span class="section-tag">Diagnóstico Estratégico</span>
+            <h2 class="section-title">Planteamiento del Problema</h2>
+            <p class="section-subtitle">Estructura causa-efecto identificada en el sistema productivo actual</p>
+        </div>
+
+        <div class="problem-tree-wrapper">
+            <div class="tree-level-title">Efectos Logísticos Generados</div>
+            <div class="effects-grid">
+                <div class="tree-node">Tiempos muertos en el proceso</div>
+                <div class="tree-node">Desorden en la producción diaria</div>
+                <div class="tree-node">Retrasos en la entrega de pedidos</div>
+                <div class="tree-node">Alto desperdicio de materiales</div>
+                <div class="tree-node">Aumento de reprocesos</div>
+                <div class="tree-node">Baja calidad en prendas confeccionadas</div>
+            </div>
+
+            <div class="central-problem-node">
+                BAJA EFICIENCIA OPERATIVA EN EL TALLER DE COSTURA
+            </div>
+
+            <div class="tree-level-title">Causas Raíz Identificadas</div>
+            <div class="causes-grid">
+                <div class="tree-node">Deficiente planificación y organización del trabajo</div>
+                <div class="tree-node">Falta de mantenimiento preventivo en maquinaria</div>
+                <div class="tree-node">Ausencia de control y seguimiento de tiempos</div>
+                <div class="tree-node">Falta de estandarización en procesos</div>
+                <div class="tree-node">Falta de capacitación del personal</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivos del Proyecto -->
+    <section id="objetivos">
+        <div class="section-header">
+            <span class="section-tag">Direccionamiento Estratégico</span>
+            <h2 class="section-title">Objetivos del Proyecto</h2>
+            <p class="section-subtitle">Metas y propósitos fundamentales del plan operativo logístico</p>
+        </div>
+
+        <div class="objective-main-banner">
+            <h3>Objetivo General</h3>
+            <p>Confeccionar prendas de calidad que satisfagan las necesidades de nuestros clientes, ofreciendo un servicio confiable, oportuno y optimizado mediante un plan operativo logístico estructurado.</p>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary-dark); font-size: 1.8rem;">Objetivos Específicos</h3>
+        
+        <div class="specific-objectives-grid">
+            <div class="obj-card">
+                <i class="fa-solid fa-shirt"></i>
+                <p>Confeccionar prendas con altos estándares de calidad textil.</p>
+            </div>
+            <div class="obj-card">
+                <i class="fa-solid fa-clock"></i>
+                <p>Entregar los pedidos en el tiempo acordado con mejora en tiempos de ciclo.</p>
+            </div>
+            <div class="obj-card">
+                <i class="fa-solid fa-handshake"></i>
+                <p>Fidelizar a los clientes mediante un excelente servicio y cumplimiento.</p>
+            </div>
+            <div class="obj-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <p>Fortalecer el crecimiento, escalabilidad y posicionamiento de la marca propia.</p>
+            </div>
+            <div class="obj-card" style="grid-column: span 2;">
+                <i class="fa-solid fa-lightbulb"></i>
+                <p>Innovar continuamente en diseños, métodos de trabajo y procesos de confección en el taller satélite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Institucional -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Madeline Mujeres con Estilo & Certiredes</h3>
+            <p>Proyecto Tecnólogo Coordinación de Procesos Logísticos · SENA</p>
+            
+            <div class="social-icons-group">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+
+            <p style="font-weight: 600; color: var(--accent-mint);">@SENAComunica | www.sena.edu.co</p>
+            <p>&copy; 2026 Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
