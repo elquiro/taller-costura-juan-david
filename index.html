@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -56,6 +57,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+        }
+
+        /* Toggle del menú móvil (checkbox hack, sin JS) */
+        .nav-toggle { display: none; }
+        .nav-toggle-label {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+            padding: 0.3rem 0.5rem;
+            line-height: 1;
         }
 
         .brand-wrapper { display: flex; align-items: center; gap: 1rem; }
@@ -74,7 +87,7 @@
             font-family: 'Inter', sans-serif; letter-spacing: 0.5px;
         }
 
-        nav ul { display: flex; list-style: none; gap: 1.3rem; align-items: center; flex-wrap: wrap; }
+        nav ul { display: flex; list-style: none; gap: 1.3rem; align-items: center; flex-wrap: wrap; margin: 0; }
 
         nav a {
             text-decoration: none; color: var(--primary-dark);
@@ -100,6 +113,7 @@
         }
 
         .hero-content { max-width: 1000px; animation: fadeInDown 1s ease-out; }
+        .hero-inicio { padding-top: 10rem; }
 
         .sena-badge {
             background: rgba(134, 193, 159, 0.2); color: var(--accent-mint);
@@ -463,13 +477,95 @@
             .dofa-grid { grid-template-columns: 1fr; }
         }
 
+        /* Tablet / menú hamburguesa */
         @media (max-width: 900px) {
-            nav ul { display: none; }
-            .grid-2col, .effects-grid, .causes-grid, .specific-objectives-grid, .team-profile-container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.4rem; }
+            .nav-container { padding: 0.7rem 1.5rem; }
+            .nav-toggle-label { display: block; }
+
+            nav {
+                width: 100%;
+                order: 3;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                width: 100%;
+                background: var(--white);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+                max-height: 70vh;
+                overflow-y: auto;
+            }
+            nav ul li { width: 100%; border-top: 1px solid #EDF2F0; }
+            nav a { display: block; padding: 0.9rem 1.5rem; font-size: 0.95rem; }
+            nav a::after { display: none; }
+
+            .nav-toggle:checked ~ nav ul { display: flex; }
+
+            .grid-2col, .effects-grid, .causes-grid, .specific-objectives-grid,
+            .team-profile-container, .workshop-gallery { grid-template-columns: 1fr; }
+            .obj-card[style*="span 2"] { grid-column: span 1 !important; }
+
+            .hero h1 { font-size: 2.3rem; }
+            .hero p { font-size: 1.05rem; }
             section { padding: 4rem 1.5rem; }
             table.strategy-table { font-size: 0.85rem; }
             .theory-card { flex-direction: column; }
+            .gallery-box { height: 220px; }
+        }
+
+        /* Móvil */
+        @media (max-width: 640px) {
+            .brand-logo { height: 40px; width: 40px; }
+            .brand { font-size: 1.05rem; }
+            .brand span { font-size: 0.68rem; }
+
+            .hero { padding-left: 1.2rem; padding-right: 1.2rem; }
+            .hero-inicio { padding-top: 8.5rem; }
+            .hero h1 { font-size: 1.8rem; line-height: 1.3; }
+            .hero p { font-size: 0.98rem; }
+            .sena-badge { font-size: 0.7rem; padding: 0.45rem 1.1rem; letter-spacing: 0.8px; }
+            .btn-main { padding: 0.85rem 1.8rem; font-size: 0.92rem; }
+            .presented-by-people { gap: 1.5rem; }
+            .presented-person img { width: 58px; height: 58px; }
+
+            section { padding: 3rem 1.2rem; }
+            .section-title { font-size: 1.9rem; }
+            .section-subtitle { font-size: 0.95rem; }
+
+            .slide-card, .antecedente-card, .pillar-card, .instrument-card { padding: 1.6rem; }
+            .problem-tree-wrapper { padding: 1.8rem 1.3rem; }
+            .central-problem-node { font-size: 1.1rem; padding: 1.4rem; }
+
+            .grid-3col, .grid-4col, .grid-5col { grid-template-columns: 1fr; }
+            .cycle-card, .cycle-center { font-size: 0.92rem; }
+
+            .legal-item { flex-direction: column; gap: 0.8rem; padding: 1.2rem; }
+
+            .objective-main-banner { padding: 2rem 1.5rem; }
+            .objective-main-banner p { font-size: 1rem; }
+            .obj-card { flex-direction: column; text-align: center; }
+
+            .dofa-card { padding: 1.6rem; }
+
+            /* Tabla de metodología: scroll horizontal en vez de romper el layout */
+            .strategy-table-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            table.strategy-table { min-width: 640px; }
+
+            footer { padding: 3rem 1.2rem 1.5rem 1.2rem; }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 { font-size: 1.55rem; }
+            .section-title { font-size: 1.6rem; }
+            .gallery-box { height: 180px; }
         }
     </style>
 </head>
@@ -482,6 +578,8 @@
                 <img src="img/madelein-costura.jpeg" alt="Logo Madeline" class="brand-logo">
                 <div class="brand">Madeline<span>Mujeres con Estilo</span></div>
             </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label"><i class="fa-solid fa-bars"></i></label>
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
@@ -498,7 +596,7 @@
     </header>
 
     <!-- Hero / Presentación Ejecutiva (Diapositivas 1-2) -->
-    <section id="inicio" class="hero" style="padding-top: 10rem;">
+    <section id="inicio" class="hero hero-inicio">
         <div class="hero-content">
             <span class="sena-badge">TECNÓLOGO COORDINACIÓN DE PROCESOS LOGÍSTICOS · ID 3118357</span>
             <h1>Propuesta de un Plan Operativo de los Procesos Logísticos</h1>
@@ -621,7 +719,7 @@
                 <div class="gallery-overlay">Gestión de Insumos y Bodega</div>
             </div>
             <div class="gallery-box">
-                <img src="img/imagen_07.png" alt="Operaria trabajando">
+                <img src="img/imagen_11.jpeg" alt="Operaria trabajando">
                 <div class="gallery-overlay">Proceso Operativo en Máquina</div>
             </div>
         </div>
